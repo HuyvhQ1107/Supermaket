@@ -65,6 +65,10 @@
             this.button9 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -110,7 +114,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.groupBox1.Location = new System.Drawing.Point(206, 109);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(541, 400);
+            this.groupBox1.Size = new System.Drawing.Size(541, 436);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin nhà cung cấp";
@@ -319,6 +323,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button13);
+            this.groupBox2.Controls.Add(this.button12);
+            this.groupBox2.Controls.Add(this.button11);
+            this.groupBox2.Controls.Add(this.button10);
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.dateTimePicker2);
             this.groupBox2.Controls.Add(this.textBox9);
@@ -331,7 +339,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.groupBox2.Location = new System.Drawing.Point(790, 109);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(606, 391);
+            this.groupBox2.Size = new System.Drawing.Size(606, 436);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Loại sản phẩm";
@@ -409,7 +417,7 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 176);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 158);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -419,7 +427,7 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button9.Location = new System.Drawing.Point(577, 540);
+            this.button9.Location = new System.Drawing.Point(592, 551);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(90, 41);
             this.button9.TabIndex = 15;
@@ -428,7 +436,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(738, 551);
+            this.textBox7.Location = new System.Drawing.Point(740, 570);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(263, 22);
             this.textBox7.TabIndex = 15;
@@ -437,12 +445,48 @@
             // 
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(195, 601);
+            this.dataGridView2.Location = new System.Drawing.Point(198, 601);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1291, 209);
+            this.dataGridView2.Size = new System.Drawing.Size(1288, 209);
             this.dataGridView2.TabIndex = 23;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(16, 389);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(90, 41);
+            this.button10.TabIndex = 15;
+            this.button10.Text = "Thêm";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(155, 389);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(90, 41);
+            this.button11.TabIndex = 15;
+            this.button11.Text = "Sửa";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(322, 389);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(96, 41);
+            this.button12.TabIndex = 15;
+            this.button12.Text = "Xóa";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(469, 389);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(91, 41);
+            this.button13.TabIndex = 15;
+            this.button13.Text = "Reset";
+            this.button13.UseVisualStyleBackColor = true;
             // 
             // NhaCungCap
             // 
@@ -510,5 +554,9 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
     }
 }

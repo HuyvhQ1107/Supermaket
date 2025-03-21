@@ -183,9 +183,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(309, 40);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 23);
+            this.label3.Size = new System.Drawing.Size(123, 23);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Mã phiếu nhập";
+            this.label3.Text = "Nhà Cung Cấp";
             // 
             // textBox1
             // 
@@ -283,7 +283,7 @@
             this.groupBox3.Size = new System.Drawing.Size(296, 112);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Lọc tho tổng tiền ";
+            this.groupBox3.Text = "Lọc theo tổng tiền ";
             // 
             // comboBox1
             // 
@@ -358,11 +358,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(196, 411);
+            this.dataGridView1.Location = new System.Drawing.Point(199, 406);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1286, 377);
+            this.dataGridView1.Size = new System.Drawing.Size(1293, 385);
             this.dataGridView1.TabIndex = 11;
             // 
             // PhieuHang
