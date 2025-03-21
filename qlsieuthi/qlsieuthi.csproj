@@ -138,6 +138,12 @@
     <Compile Include="src\main\admin\qlTaiKhoan.Designer.cs">
       <DependentUpon>qlTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\main\PhieuHang\PhieuHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\main\PhieuHang\PhieuHang.Designer.cs">
+      <DependentUpon>PhieuHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\main\qlkho\BangQlkho.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\admin\qlNhanVien.resx">
       <DependentUpon>qlNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\PhieuHang\PhieuHang.resx">
+      <DependentUpon>PhieuHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\qlkho\BangQlkho.resx">
       <DependentUpon>BangQlkho.cs</DependentUpon>
