@@ -138,6 +138,30 @@
     <Compile Include="src\main\admin\qlTaiKhoan.Designer.cs">
       <DependentUpon>qlTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\main\admin\SanPham\BanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\main\admin\SanPham\BanHang.Designer.cs">
+      <DependentUpon>BanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\main\admin\SanPham\KhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\main\admin\SanPham\KhachHang.Designer.cs">
+      <DependentUpon>KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\main\admin\SanPham\LoaiSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\main\admin\SanPham\LoaiSanPham.Designer.cs">
+      <DependentUpon>LoaiSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\main\admin\SanPham\SanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\main\admin\SanPham\SanPham.Designer.cs">
+      <DependentUpon>SanPham.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\main\NhanVien\NhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +247,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\admin\qlTaiKhoan.resx">
       <DependentUpon>qlTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\admin\SanPham\BanHang.resx">
+      <DependentUpon>BanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\admin\SanPham\KhachHang.resx">
+      <DependentUpon>KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\admin\SanPham\LoaiSanPham.resx">
+      <DependentUpon>LoaiSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\admin\SanPham\SanPham.resx">
+      <DependentUpon>SanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\NhanVien\NhanVien.resx">
       <DependentUpon>NhanVien.cs</DependentUpon>
