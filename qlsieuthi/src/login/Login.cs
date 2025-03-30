@@ -4,6 +4,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using qlsieuthi.src.main.admin;
+using qlsieuthi.src.main.ketoan;
+using qlsieuthi.src.main.nhanvien;
+using qlsieuthi.src.main.qlkho;
 
 namespace qlsieuthi.LOGIN
 {
@@ -17,7 +20,7 @@ namespace qlsieuthi.LOGIN
         }
 
         // Gọi lại class lib để kết nối MySQL
-        lib mysql = new lib();
+        connectdb mysql = new connectdb();
 
         private void btnLog_Click(object sender, EventArgs e)
         {
@@ -66,18 +69,24 @@ namespace qlsieuthi.LOGIN
                             if (ChucVu.Equals("Kế toán", StringComparison.OrdinalIgnoreCase))
                             {
                                 // Chuyên form kế toán
+                                this.Hide();
+                                thuchi ftc = new thuchi();
+                                ftc.Show();
                             }
                             if (ChucVu.Equals("Quản lí kho", StringComparison.OrdinalIgnoreCase))
                             {
                                 // Chuyên form ql kho
+                                this.Hide();
+                                BangQlkho fbqlkho = new BangQlkho();
+                                fbqlkho.Show();
                             }
                             if (ChucVu.Equals("Nhân viên", StringComparison.OrdinalIgnoreCase))
                             {
                                 // Chuyên form nhân viên
+                                this.Hide();
+                                HoaDon fdh = new HoaDon();
+                                fdh.Show();
                             }
-
-                            // ẩn form
-                            this.Hide();
                         }
                         else
                         {
@@ -101,5 +110,7 @@ namespace qlsieuthi.LOGIN
         {
             this.Close();
         }
+
+        
     }
 }

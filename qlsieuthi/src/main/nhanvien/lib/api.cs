@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
-namespace qlsieuthi.src.main.admin.libNhanVien
+namespace qlsieuthi.src.main.nhanvien.lib
 {
+
     public class Province
     {
         public string Name { get; set; }
@@ -27,21 +28,15 @@ namespace qlsieuthi.src.main.admin.libNhanVien
 
     public class api
     {
-        private qlNhanVien _qlNhanVien;
+        private TaoKhachHang _TaoKhachHang;
         private List<Province> provinceList = new List<Province>();
 
         // Gọi hàm add vào form qlNhanVien
-        public api(qlNhanVien qlNhanViens)
+        public api(TaoKhachHang TaoKhachHangs)
         {
-            _qlNhanVien = qlNhanViens;
+            _TaoKhachHang = TaoKhachHangs;
         }
-        private qlKhoHang _qlKhoHang;
-        // Gọi hàm add vào form qlKhoHang
-        public api(qlKhoHang qlKhoHangs)
-        {
-            _qlKhoHang = qlKhoHangs;
-        }
-        
+
 
         // Load dữ liệu từ API vào ComboBox
         public async Task LoadDataCity()
@@ -58,19 +53,12 @@ namespace qlsieuthi.src.main.admin.libNhanVien
                     provinceList = JsonConvert.DeserializeObject<List<Province>>(jsonData);
                     provinceList.Insert(0, new Province { Name = "Chọn tỉnh/thành" });
 
-                    ComboBox cbbTinhTP, cbbQuanHuyen, cbbPhuongXa ;
+                    ComboBox cbbTinhTP, cbbQuanHuyen, cbbPhuongXa;
 
                     // Gọi vào các form
-                    if (_qlNhanVien != null)
+                    if (_TaoKhachHang != null)
                     {
-                        (cbbTinhTP, cbbQuanHuyen, cbbPhuongXa) = _qlNhanVien.GetLoadCbbDC();
-                    }
-                    else if (_qlKhoHang != null)
-                    {
-                        if (_qlKhoHang is qlKhoHang)
-                            (cbbTinhTP, cbbQuanHuyen, cbbPhuongXa) = _qlKhoHang.GetLoadCbbDC_second();
-                        else
-                            (cbbTinhTP, cbbQuanHuyen, cbbPhuongXa) = _qlKhoHang.GetLoadCbbDC();
+                        (cbbTinhTP, cbbQuanHuyen, cbbPhuongXa) = _TaoKhachHang.GetLoadCbbDC();
                     }
                     else
                     {

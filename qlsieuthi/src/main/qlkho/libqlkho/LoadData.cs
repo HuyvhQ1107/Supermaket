@@ -9,7 +9,7 @@ namespace qlsieuthi.src.main.qlkho.libqlkho
     public class LoadData
     {
         // Gọi lib mysql
-        private lib mysql = new lib();
+        private connectdb mysql = new connectdb();
 
         // Load data : mã loại hàng
         public DataTable GetMaLoaiHang()

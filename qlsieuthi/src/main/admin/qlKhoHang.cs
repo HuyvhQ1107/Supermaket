@@ -5,11 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using qlsieuthi.src.main.admin.chuyenform;
 using qlsieuthi.src.main.admin.libNhanVien;
 using qlsieuthi.src.main.admin.libqlKhoHang;
+using qlsieuthi.src.main.qlkho.libqlkho;
 
 namespace qlsieuthi.src.main.admin
 {
@@ -18,13 +21,22 @@ namespace qlsieuthi.src.main.admin
         // Gọi thư viện lib
         public (ComboBox, ComboBox, ComboBox) GetLoadCbbDC()
         {
-            if (cbbTinhTP == null || cbbQuanHuyen == null || cbbPhuongXa == null)
+            if (cbbTinhTP == null || cbbQuanHuyen == null || cbbPhuongXa == null || cbbTinhTPho == null || cbbQHuyen == null || cbbPXa == null)
             {
                 MessageBox.Show("ComboBox chưa được khởi tạo!");
             }
             return (cbbTinhTP, cbbQuanHuyen, cbbPhuongXa);
         }
-        lib mysql = new lib();
+        public (ComboBox, ComboBox, ComboBox) GetLoadCbbDC_second()
+        {
+            if (cbbTinhTPho == null || cbbQHuyen == null || cbbPXa == null)
+            {
+                MessageBox.Show("ComboBox chưa được khởi tạo!");
+            }
+            return (cbbTinhTPho, cbbQHuyen, cbbPXa);
+        }
+        connectdb mysql = new connectdb();
+        private LoadDataNhanVien dbLoad = new LoadDataNhanVien();
 
         public qlKhoHang()
         {
@@ -34,7 +46,9 @@ namespace qlsieuthi.src.main.admin
             api apiloader = new api(this);
             apiloader.LoadDataCity();
 
-            
+
+            // Load cbb
+            dbLoad.LoadCBBMaNV(cbbMaNhanVien);
         }
 
         private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
@@ -217,6 +231,201 @@ namespace qlsieuthi.src.main.admin
                     return;
                 }
             }
+        }
+
+
+
+        /*
+         *  Quản lí kho
+         */
+        private void btnThemVaoBang_Click(object sender, EventArgs e)
+        {
+            string makho = txtIDMaKho.Text.Trim();
+            string tenkho = txtTenKho.Text.Trim();
+            string MaNhanVien = cbbMaNhanVien.Text.Trim();
+            txtSoLuong.Text = "0";
+            string TinhTPho = cbbTinhTPho.Text.Trim();
+            string QHuyen = cbbQHuyen.Text.Trim();
+            string PXa = cbbPXa.Text.Trim();
+            string DC = txtDiaChi2.Text.Trim();
+
+            string DiaChi = $"{DC} , {PXa} , {QHuyen} , {TinhTPho}";
+
+            if (string.IsNullOrEmpty(makho))
+            {
+                MessageBox.Show("Lỗi: Không thể để trống mã kho");
+                txtIDMaKho.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(tenkho))
+            {
+                MessageBox.Show("Lỗi: Không thể để trống tên kho");
+                txtTenKho.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(DC))
+            {
+                MessageBox.Show("Lỗi: Không thể để trống Địa chỉ");
+                txtDC.Focus();
+                return;
+            }
+
+            // Kiểm tra trùng mã kho trong DataGridView
+            foreach (DataGridViewRow row in dgvQLKho.Rows)
+            {
+                if (row.Cells["Mã kho"].Value != null && row.Cells["Mã kho"].Value.ToString() == makho)
+                {
+                    MessageBox.Show("Lỗi: Mã kho đã tồn tại!", "Trùng dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            // Thêm vào bảng
+            DataTable dt;
+            if (dgvQLKho.DataSource == null)
+            {
+                dt = new DataTable();
+                dt.Columns.Add("Mã kho");
+                dt.Columns.Add("Tên kho");
+                dt.Columns.Add("Mã nhân viên quản lí");
+                dt.Columns.Add("Địa chỉ");
+            }
+            else
+            {
+                dt = (DataTable)dgvQLKho.DataSource;
+            }
+
+            // Thêm dòng mới vào DataTable
+            DataRow newRow = dt.NewRow();
+            newRow["Mã kho"] = makho;
+            newRow["Tên kho"] = tenkho;
+            newRow["Mã nhân viên quản lí"] = MaNhanVien;
+            newRow["Địa chỉ"] = DiaChi;
+
+            dt.Rows.Add(newRow);
+
+            // Cập nhật DataSource của DataGridView
+            dgvQLKho.DataSource = dt;
+
+            dgvQLKho.Columns["Mã kho"].Width = 100;   // Đặt chiều rộng là 100px
+            dgvQLKho.Columns["Tên kho"].Width = 150;  // Đặt chiều rộng là 150px
+            dgvQLKho.Columns["Mã nhân viên quản lí"].Width = 200;
+            dgvQLKho.Columns["Địa chỉ"].Width = 400;
+
+
+            // Xóa các trường nhập để chuẩn bị thêm mới
+            txtIDMaKho.Clear();
+            txtTenKho.Clear();
+            cbbMaNhanVien.SelectedIndex = -1;
+            txtDiaChi2.Clear();
+            cbbTinhTP.SelectedIndex = -1;
+            cbbQHuyen.SelectedIndex = -1;
+            cbbPXa.SelectedIndex = -1;
+        }
+
+        private void btnXoaKhoiBang_Click(object sender, EventArgs e)
+        {
+            if (dgvQLKho.SelectedRows.Count > 0) // Kiểm tra có dòng nào được chọn không
+            {
+                DialogResult xacNhan = MessageBox.Show("Bạn có chắc chắn muốn xóa dòng này?", "Xác nhận xóa",
+                                                       MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (xacNhan == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dgvQLKho.SelectedRows)
+                    {
+                        if (!row.IsNewRow) // Kiểm tra dòng không phải dòng trống mới của DataGridView
+                        {
+                            dgvQLKho.Rows.Remove(row);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            string QuerryUpCSDL = "INSERT INTO QUAN_LY_KHO (MaKho, TenKho, DiaChi, MaNV_QuanLy) " +
+                                         "VALUES (@MaKho, @TenKho, @DiaChi, @MaNV_QuanLy); ";
+
+
+            DialogResult xacnhan = MessageBox.Show("Bạn muốn thêm dữ liệu trong bảng vào CSDL", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (xacnhan == DialogResult.Yes)
+            {
+                using (MySqlConnection conn = mysql.sql())
+                {
+                    conn.Open();
+                    using (MySqlCommand cmdUpdate = new MySqlCommand(QuerryUpCSDL, conn))
+                    {
+                        foreach (DataGridViewRow row in dgvQLKho.Rows)
+                        {
+                            try
+                            {
+                                if (row.Cells["Mã kho"].Value == null) continue; // Bỏ qua dòng trống
+
+                                cmdUpdate.Parameters.Clear(); // Xóa tham số cũ trước khi thêm mới
+                                cmdUpdate.Parameters.AddWithValue("@MaKho", row.Cells["Mã kho"].Value.ToString());
+                                cmdUpdate.Parameters.AddWithValue("@TenKho", row.Cells["Tên kho"].Value.ToString());
+                                cmdUpdate.Parameters.AddWithValue("@DiaChi", row.Cells["Địa chỉ"].Value.ToString());
+                                cmdUpdate.Parameters.AddWithValue("@MaNV_QuanLy", row.Cells["Mã nhân viên quản lí"].Value.ToString());
+
+                                count += cmdUpdate.ExecuteNonQuery(); // Thực thi truy vấn
+                            }
+                            catch (MySqlException ex)
+                            {
+                                // Kiểm tra lỗi Duplicate Entry
+                                if (ex.Number == 1062) // Lỗi trùng khóa chính
+                                {
+                                    // Lấy mã kho bị trùng từ thông báo lỗi
+                                    string duplicatedKey = "";
+                                    Match match = Regex.Match(ex.Message, @"'(.+?)' for key"); // Lấy giá trị bị trùng
+                                    if (match.Success)
+                                    {
+                                        duplicatedKey = match.Groups[1].Value;
+                                    }
+
+                                    MessageBox.Show($"Lỗi: Mã kho '{duplicatedKey}' đã tồn tại trong cơ sở dữ liệu!",
+                                                    "Trùng dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    count = 0;
+                                    break;
+                                }
+                                else
+                                {
+                                    // Nếu là lỗi khác, hiển thị chi tiết lỗi
+                                    MessageBox.Show("Lỗi khi thêm dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (count > 0) // Chỉ hiển thị khi có dữ liệu được thêm
+                {
+                    MessageBox.Show($"Thêm thành công {count} kho hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvQLKho.DataSource = null;
+                    dgvQLKho.Rows.Clear();
+                }
+            }
+        }
+
+        private void btnQLTaiKhoan_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            chuyenformadmin fc = new chuyenformadmin();
+            fc.fQLNhanVien();
+        }
+
+        private void btnNhanVien_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            chuyenformadmin fc = new chuyenformadmin();
+            fc.fQLTaiKhoan();
         }
     }
 }

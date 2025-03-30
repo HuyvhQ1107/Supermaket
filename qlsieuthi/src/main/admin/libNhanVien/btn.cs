@@ -45,8 +45,7 @@ namespace qlsieuthi.src.main.admin.libNhanVien
         public void ADMain(Form currentForm)
         {
             currentForm.Hide();
-            ADMain fqlADMain = new ADMain();
-            fqlADMain.Show();
+           
         }
         public void QLNhanVien(Form currentForm)
         {

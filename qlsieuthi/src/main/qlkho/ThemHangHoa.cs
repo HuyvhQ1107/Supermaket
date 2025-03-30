@@ -20,7 +20,7 @@ namespace qlsieuthi.src.main.qlkho
     public partial class themhanghoa : Form
     {
         // Lib
-        lib mysql = new lib();
+        connectdb mysql = new connectdb();
         private LoadData dbLoad = new LoadData();
         private DataTable dgvhead = new DataTable();
         InputQLkho dulieu = new InputQLkho();

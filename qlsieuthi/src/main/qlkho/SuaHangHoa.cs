@@ -16,7 +16,7 @@ namespace qlsieuthi.src.main.qlkho
     public partial class SuaHangHoa : Form
     {
         // Gọi lib
-        lib mysql = new lib();
+        connectdb mysql = new connectdb();
         private LoadData dbLoad = new LoadData();
         InputQLkho dulieu = new InputQLkho();
 

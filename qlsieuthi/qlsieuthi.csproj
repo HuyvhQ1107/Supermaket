@@ -102,24 +102,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\lib.cs" />
+    <Compile Include="src\connectdb.cs" />
     <Compile Include="src\login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\main\admin\ADMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\main\admin\ADMain.Designer.cs">
-      <DependentUpon>ADMain.cs</DependentUpon>
-    </Compile>
+    <Compile Include="src\main\admin\chuyenform\chuyenformadmin.cs" />
     <Compile Include="src\main\admin\libNhanVien\api.cs" />
     <Compile Include="src\main\admin\libNhanVien\btn.cs" />
     <Compile Include="src\main\admin\libNhanVien\cbb.cs" />
     <Compile Include="src\main\admin\libNhanVien\data.cs" />
     <Compile Include="src\main\admin\libqlKhoHang\InputData.cs" />
+    <Compile Include="src\main\admin\libqlKhoHang\LoadDataNhanVien.cs" />
     <Compile Include="src\main\admin\qlKhoHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,59 +134,26 @@
     <Compile Include="src\main\admin\qlTaiKhoan.Designer.cs">
       <DependentUpon>qlTaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\main\admin\SanPham\BanHang.cs">
+    <Compile Include="src\main\ketoan\lib\LoadDataKT.cs" />
+    <Compile Include="src\main\ketoan\thuchi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\main\admin\SanPham\BanHang.Designer.cs">
-      <DependentUpon>BanHang.cs</DependentUpon>
+    <Compile Include="src\main\ketoan\thuchi.Designer.cs">
+      <DependentUpon>thuchi.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\main\admin\SanPham\KhachHang.cs">
+    <Compile Include="src\main\nhanvien\HoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\main\admin\SanPham\KhachHang.Designer.cs">
-      <DependentUpon>KhachHang.cs</DependentUpon>
+    <Compile Include="src\main\nhanvien\HoaDon.Designer.cs">
+      <DependentUpon>HoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\main\admin\SanPham\LoaiSanPham.cs">
+    <Compile Include="src\main\nhanvien\lib\api.cs" />
+    <Compile Include="src\main\nhanvien\lib\LoadDataNV.cs" />
+    <Compile Include="src\main\nhanvien\TaoKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\main\admin\SanPham\LoaiSanPham.Designer.cs">
-      <DependentUpon>LoaiSanPham.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\main\admin\SanPham\SanPham.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\main\admin\SanPham\SanPham.Designer.cs">
-      <DependentUpon>SanPham.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\main\NhanVien\NhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\main\NhanVien\NhanVien.Designer.cs">
-      <DependentUpon>NhanVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\main\NhanVien\TaiKhoan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\main\NhanVien\TaiKhoan.Designer.cs">
-      <DependentUpon>TaiKhoan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\main\NhanVien\Thongke.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\main\NhanVien\Thongke.Designer.cs">
-      <DependentUpon>Thongke.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\main\PhieuHang\NhaCungCap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\main\PhieuHang\NhaCungCap.Designer.cs">
-      <DependentUpon>NhaCungCap.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\main\PhieuHang\PhieuHang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\main\PhieuHang\PhieuHang.Designer.cs">
-      <DependentUpon>PhieuHang.cs</DependentUpon>
+    <Compile Include="src\main\nhanvien\TaoKhachHang.Designer.cs">
+      <DependentUpon>TaoKhachHang.cs</DependentUpon>
     </Compile>
     <Compile Include="src\main\qlkho\BangQlkho.cs">
       <SubType>Form</SubType>
@@ -202,12 +165,6 @@
     <Compile Include="src\main\qlkho\libqlkho\cbbQlKho.cs" />
     <Compile Include="src\main\qlkho\libqlkho\InputQLkho.cs" />
     <Compile Include="src\main\qlkho\libqlkho\LoadData.cs" />
-    <Compile Include="src\main\qlkho\mainQlkho.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\main\qlkho\mainQlkho.Designer.cs">
-      <DependentUpon>mainQlkho.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\main\qlkho\SuaHangHoa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +192,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="src\login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -248,38 +206,17 @@
     <EmbeddedResource Include="src\main\admin\qlTaiKhoan.resx">
       <DependentUpon>qlTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\admin\SanPham\BanHang.resx">
-      <DependentUpon>BanHang.cs</DependentUpon>
+    <EmbeddedResource Include="src\main\ketoan\thuchi.resx">
+      <DependentUpon>thuchi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\admin\SanPham\KhachHang.resx">
-      <DependentUpon>KhachHang.cs</DependentUpon>
+    <EmbeddedResource Include="src\main\nhanvien\HoaDon.resx">
+      <DependentUpon>HoaDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\admin\SanPham\LoaiSanPham.resx">
-      <DependentUpon>LoaiSanPham.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\admin\SanPham\SanPham.resx">
-      <DependentUpon>SanPham.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\NhanVien\NhanVien.resx">
-      <DependentUpon>NhanVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\NhanVien\TaiKhoan.resx">
-      <DependentUpon>TaiKhoan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\NhanVien\Thongke.resx">
-      <DependentUpon>Thongke.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\PhieuHang\NhaCungCap.resx">
-      <DependentUpon>NhaCungCap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\PhieuHang\PhieuHang.resx">
-      <DependentUpon>PhieuHang.cs</DependentUpon>
+    <EmbeddedResource Include="src\main\nhanvien\TaoKhachHang.resx">
+      <DependentUpon>TaoKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\qlkho\BangQlkho.resx">
       <DependentUpon>BangQlkho.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\qlkho\mainQlkho.resx">
-      <DependentUpon>mainQlkho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\qlkho\SuaHangHoa.resx">
       <DependentUpon>SuaHangHoa.cs</DependentUpon>
@@ -305,7 +242,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\main\admin\libTaiKhoan\" />
+    <None Include="Resources\supermarket.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

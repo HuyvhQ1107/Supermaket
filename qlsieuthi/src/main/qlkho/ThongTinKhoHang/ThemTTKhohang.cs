@@ -16,7 +16,7 @@ namespace qlsieuthi.src.main.qlkho.ThongTinKhoHang
     {
         //Lib
         private LoadData dbLoad = new LoadData();
-        lib mysql = new lib();
+        connectdb mysql = new connectdb();
         TTKhoHang dulieukhohang = new TTKhoHang();
 
         public ThemTTKhoHang()
@@ -193,6 +193,18 @@ namespace qlsieuthi.src.main.qlkho.ThongTinKhoHang
                     conn.Open();
                     using (MySqlCommand cmdUpdate = new MySqlCommand(QuerryUpCSDL, conn))
                     {
+                        foreach (DataGridViewRow row in dgvLoadQLKho.Rows)
+                        {
+                            if (row.Cells["Mã kho hàng"].Value == null) continue; // Bỏ qua dòng trống
+
+                            cmdUpdate.Parameters.Clear(); // Xóa tham số cũ trước khi thêm mới
+                            cmdUpdate.Parameters.AddWithValue("@MaKho", row.Cells["Mã kho hàng"].Value.ToString());
+                            cmdUpdate.Parameters.AddWithValue("@MaHHKho", row.Cells["Mã hàng hóa"].Value.ToString());
+                            cmdUpdate.Parameters.AddWithValue("@NgayNhap", row.Cells["Ngày nhập"].Value.ToString());
+                            cmdUpdate.Parameters.AddWithValue("@Soluonghh", row.Cells["Số lượng"].Value.ToString());
+
+                            count += cmdUpdate.ExecuteNonQuery(); // Thực thi truy vấn
+                        }
                     }
                 }
 
@@ -203,6 +215,9 @@ namespace qlsieuthi.src.main.qlkho.ThongTinKhoHang
             }
         }
 
-
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

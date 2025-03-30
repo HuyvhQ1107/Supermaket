@@ -17,7 +17,7 @@ namespace qlsieuthi.src.main.qlkho
     {
         // Load lib
         private LoadData dbLoad = new LoadData();
-        lib mysql = new lib();
+        connectdb mysql = new connectdb();
         public ComboBox GetLoadCbb()
         {
             return cbbTrangThai;
@@ -236,6 +236,25 @@ namespace qlsieuthi.src.main.qlkho
         private void btnBangHH_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbbLoaiHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThemHH_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            themhanghoa fthh = new themhanghoa();
+            fthh.Show();
+        }
+
+        private void btnSuaHH_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SuaHangHoa fshh = new SuaHangHoa();
+            fshh.Show();
         }
     }
 }

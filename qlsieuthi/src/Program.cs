@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using qlsieuthi.LOGIN;
 using qlsieuthi.src.main.admin;
-using qlsieuthi.src.main.PhieuHang;
+using qlsieuthi.src.main.ketoan;
+using qlsieuthi.src.main.nhanvien;
 using qlsieuthi.src.main.qlkho;
 using qlsieuthi.src.main.qlkho.ThongTinKhoHang;
 
@@ -21,7 +22,7 @@ namespace qlsieuthi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PhieuHang());
+            Application.Run(new login());
         }
     }
 }

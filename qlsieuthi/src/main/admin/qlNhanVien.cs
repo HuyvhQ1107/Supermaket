@@ -40,7 +40,7 @@ namespace qlsieuthi.src.main.admin
 
 
         // Gọi hàm kết nối csdl
-        lib mysql = new lib();
+        connectdb mysql = new connectdb();
 
 
         DataTable dtNhanVien = new DataTable();
@@ -650,11 +650,6 @@ namespace qlsieuthi.src.main.admin
          * CÁC NÚT CÓ TẠI PAGE QL NHÂN VIÊN
          * 
          */
-        private void btnMain_Click(object sender, EventArgs e)
-        {
-            btn ADMainForm = new btn();
-            ADMainForm.ADMain(this);
-        }
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
             btn qlNhanVienForm = new btn();
@@ -672,5 +667,7 @@ namespace qlsieuthi.src.main.admin
             btn qlKhoHangForm = new btn();
             qlKhoHangForm.QLKhoHang(this);
         }
+
+       
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbbMaKho = new System.Windows.Forms.ComboBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnUpdateCSDL = new System.Windows.Forms.Button();
             this.btnThemVaoBang = new System.Windows.Forms.Button();
@@ -44,10 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.cbbMaKho = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoadQLKho)).BeginInit();
             this.panel3.SuspendLayout();
@@ -76,6 +74,15 @@
             this.panel2.Size = new System.Drawing.Size(804, 583);
             this.panel2.TabIndex = 9;
             // 
+            // cbbMaKho
+            // 
+            this.cbbMaKho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbMaKho.FormattingEnabled = true;
+            this.cbbMaKho.Location = new System.Drawing.Point(96, 84);
+            this.cbbMaKho.Name = "cbbMaKho";
+            this.cbbMaKho.Size = new System.Drawing.Size(167, 21);
+            this.cbbMaKho.TabIndex = 26;
+            // 
             // btnExit
             // 
             this.btnExit.Location = new System.Drawing.Point(673, 530);
@@ -84,6 +91,7 @@
             this.btnExit.TabIndex = 25;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnUpdateCSDL
             // 
@@ -206,9 +214,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(105, 583);
@@ -224,16 +230,6 @@
             this.button3.Text = "Thêm hàng hóa";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(-1, 109);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 39);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Sửa hàng hóa";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -243,24 +239,6 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "Trang chủ";
             this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(-1, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 51);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Bảng hàng hóa";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // cbbMaKho
-            // 
-            this.cbbMaKho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbMaKho.FormattingEnabled = true;
-            this.cbbMaKho.Location = new System.Drawing.Point(96, 84);
-            this.cbbMaKho.Name = "cbbMaKho";
-            this.cbbMaKho.Size = new System.Drawing.Size(167, 21);
-            this.cbbMaKho.TabIndex = 26;
             // 
             // ThemTTKhoHang
             // 
@@ -288,9 +266,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvLoadQLKho;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtNgayNhap;
